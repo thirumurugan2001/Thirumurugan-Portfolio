@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <title>Thirumurugan Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="shortcut icon" href="Assest/Portfolio.png" type="image/x-icon" title="Portfolio Icon">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+                <span><a href="index.html">Thirumurugan Subramaniyan</a></span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="index.html">Home</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><a href="about.html">About</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"><a href="skills.html">Skills and Experience</a></div>
+                <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><a href="contact.html">Contact Us</a></div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+        <div class="dropdown">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skills.html">Skills and Experience</a>
+                <a href="contact.html">Contact Us</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
+    <section>
+        <div id="toast" class="toast" style="display:block;">
+            <span id="toast-message">Click on the company name to view the details.</span>
+            <span id="cancel-icon" class="cancel-icon">&times;</span>
+          </div>
+        <div class="contact-container">
+            <div class="contact-header">
+                <svg class="envelope-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 5H3a2 2 0 00-2 2v10a2 2 0 002 2h18a2 2 0 002-2V7a2 2 0 00-2-2z"/>
+                    <path d="M3 5l9 9 9-9"/>
+                </svg>
+                <h2>Leave Us A Message</h2>
+                <p>For more information or inquiries about my skills and experience, please feel free to get in touch with me.</p>
+            </div>
+            
+            <form class="contact-form" name="submit-to-google-sheet">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required id="Name" name="Name">
+                </div>
+            
+                <div class="form-group">
+                    <input type="phone" placeholder="Your Number" required id="Phone" name="Phone">
+                </div>
+            
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required id="Email" name="Email">
+                </div>
+            
+                <div class="form-group">
+                    <textarea placeholder="Type your message here" required id="Message" name="Message"></textarea>
+                </div>
+                <button type="button" id="contactMeBtn" class="submit-btn" onclick="sendMessage()">Send Message</button>
+                <button type="button" id="sendEmailBtn" class="submit-btn" onclick="sendEmail()">Send Email</button>
+            </form>
+            
+        </div>
+    </section>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ offset: 0 });
+
+        function hamburg() {
+            const navbar = document.querySelector(".dropdown");
+            navbar.style.transform = "translateY(0px)";
+        }
+
+        function cancel() {
+            const navbar = document.querySelector(".dropdown");
+            navbar.style.transform = "translateY(-500px)";
+        }
+    </script>
+    <script>
+        document.getElementById("contactMeBtn").addEventListener("click", async () => {
+            const name = document.getElementById("Name").value;
+            const email = document.getElementById("Email").value;
+            const phone = document.getElementById("Phone").value;
+            const message = document.getElementById("Message").value;
+        
+            if (name && email && phone && message) {
+                try {
+                    const scriptURL = 'https://script.google.com/macros/s/AKfycbzd8MlgJ5s2Hkdcytz40yGvLPv7U1HzI_4AE7fF1xTNtCUOoehZotwWWC2HtQIjYOK0/exec'
+                    const form = document.forms['submit-to-google-sheet']
+        
+                    form.addEventListener('submit', e => {
+                        e.preventDefault()
+                        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                            .then(response => console.log('Success!', response))
+                            .catch(error => console.error('Error!', error.message))
+                    })
+        
+                    if (true) {
+                        showToast()
+                        alert("Your message has been successfully sent!");
+                        document.getElementById("contactForm").reset();
+                    } else {
+                        alert("Failed to send your message. Please try again later.");
+                    }
+                } catch (error) {
+                    alert("An error occurred while sending your message.");
+                    console.error(error);
+                }
+            } else {
+                alert("Please fill out all fields.");
+            }
+        });
+    </script>
+    <script>
+        function sendEmail() {
+            const name = document.getElementById("Name").value;
+            const email = document.getElementById("Email").value;
+            const phone = document.getElementById("Phone").value;
+            const message = document.getElementById("Message").value;
+        
+            if (name && email && phone && message) {
+                const subject = "Inquiry from Thirumurugan Portfolio";
+                const body = `
+                    Hello Thirumurugan  Subramaniyan,
+        
+                    I would like to inquire about your skills and experience. Below are my details:
+        
+                    Name: ${name}
+                    Email: ${email}
+                    Phone: ${phone}
+        
+                    Message:
+                    ${message}
+                `;
+                // Construct the mailto link with the subject and body
+                const mailtoLink = `mailto:thirusubramaniyan2001@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+                // Open the default email client with the pre-populated email
+                window.location.href = mailtoLink;
+            } else {
+                alert("Please fill out all fields.");
+            }
+        } 
+    </script>
+    <script>
+        // Function to show the toast
+        function showToast() {
+            const toast = document.getElementById('toast');
+            const cancelIcon = document.getElementById('cancel-icon');
+        
+            // Show the toast for 5 seconds
+            toast.style.opacity = 1;
+            setTimeout(() => {
+            toast.style.opacity = 0;
+            }, 3000);
+        
+            // Hide the toast when the cancel icon is clicked
+            cancelIcon.addEventListener('click', () => {
+            toast.style.opacity = 0;
+            });
+        }
+        // Call showToast to display the toast message
+        showToast();
+    </script>
+</body>
+</html>
