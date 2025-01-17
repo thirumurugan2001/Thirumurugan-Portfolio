@@ -34,21 +34,26 @@
         </div>
     </nav>
     <section>
-        <div id="toast" class="toast" style="display:block;">
-            <span id="toast-message">Click on the company name to view the details.</span>
-            <span id="cancel-icon" class="cancel-icon">&times;</span>
-          </div>
+        <div id="notification-toast" class="toast" style="display: none;">
+            <span id="notification-message"></span>
+            <span class="cancel-icon" onclick="hideNotificationToast()">&times;</span>
+        </div>
         <div class="contact-container">
             <div class="contact-header">
-                <svg class="envelope-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 5H3a2 2 0 00-2 2v10a2 2 0 002 2h18a2 2 0 002-2V7a2 2 0 00-2-2z"/>
-                    <path d="M3 5l9 9 9-9"/>
-                </svg>
-                <h2>Leave Us A Message</h2>
-                <p>For more information or inquiries about my skills and experience, please feel free to get in touch with me.</p>
+                <img class="envelope-icon" src="Assest/contact.png" alt="Contact Me" title="Contact Me"  data-aos="fade-up" data-aos-duration="1000">
+                <h2  data-aos="fade-up" data-aos-duration="1000" >Leave Us A Message</h2>
+                <p  data-aos="fade-up" data-aos-duration="1000" >For more information or inquiries about my skills and experience, please feel free to get in touch with me.</p>
+                <i class="fa fa-envelope" aria-hidden="true"></i><span title="drop a mail">thirusubramaniyan2001@gmail.com</span><br>
+                <i class="fa fa-phone" aria-hidden="true"></i><span title="Call on">+91- 73392 25958</span>
+                <div class="swipe-container" data-aos="fade-up" data-aos-duration="1000">
+                    <b>
+                        <div class="swipe-track"><span class="swipe-span" style="color: rgb(228, 220, 220);">Let's talk on WhatsApp</span></div>
+                        <div class="swipe-button" id="swipeBtn">➡</div>
+                    </b>
+                </div>  
             </div>
             
-            <form class="contact-form" name="submit-to-google-sheet">
+            <form class="contact-form" name="submit-to-google-sheet" id="submit-to-google-sheet">
                 <div class="form-group">
                     <input type="text" placeholder="Your Name" required id="Name" name="Name">
                 </div>
@@ -64,12 +69,13 @@
                 <div class="form-group">
                     <textarea placeholder="Type your message here" required id="Message" name="Message"></textarea>
                 </div>
-                <button type="button" id="contactMeBtn" class="submit-btn" onclick="sendMessage()">Send Message</button>
-                <button type="button" id="sendEmailBtn" class="submit-btn" onclick="sendEmail()">Send Email</button>
+                <button type="submit" id="contactMeBtn" class="submit-btn">Send Message</button>
+                <button type="button" id="sendEmailBtn" class="submit-btn" onclick="ManualsendEmail()">Send Email</button>
             </form>
             
         </div>
     </section>
+    <!-- resposive design -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({ offset: 0 });
@@ -84,43 +90,56 @@
             navbar.style.transform = "translateY(-500px)";
         }
     </script>
+
+    <!-- Google Sheet -->
     <script>
-        document.getElementById("contactMeBtn").addEventListener("click", async () => {
-            const name = document.getElementById("Name").value;
-            const email = document.getElementById("Email").value;
-            const phone = document.getElementById("Phone").value;
-            const message = document.getElementById("Message").value;
-        
-            if (name && email && phone && message) {
-                try {
-                    const scriptURL = 'https://script.google.com/macros/s/AKfycbzd8MlgJ5s2Hkdcytz40yGvLPv7U1HzI_4AE7fF1xTNtCUOoehZotwWWC2HtQIjYOK0/exec'
-                    const form = document.forms['submit-to-google-sheet']
-        
-                    form.addEventListener('submit', e => {
-                        e.preventDefault()
-                        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                            .then(response => console.log('Success!', response))
-                            .catch(error => console.error('Error!', error.message))
-                    })
-        
-                    if (true) {
-                        showToast()
-                        alert("Your message has been successfully sent!");
-                        document.getElementById("contactForm").reset();
-                    } else {
-                        alert("Failed to send your message. Please try again later.");
-                    }
-                } catch (error) {
-                    alert("An error occurred while sending your message.");
-                    console.error(error);
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw-yJ_tzGe-953m-hIp0wolCTAY5rzapBnEaAWUdK_aS-4RD-HVgk19PHdkGTRgAImN/exec';
+        const form = document.forms['submit-to-google-sheet'];
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const submitBtn = document.getElementById('contactMeBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            fetch(scriptURL, { 
+                method: 'POST', 
+                body: new FormData(form)
+            })
+            .then(response => {
+                if (response.ok) {
+                    showNotificationToast('Thank for reaching out, Your message has been successfully sent', 'success');
+                    sendEmail()
+                    form.reset();
+                } else {
+                    throw new Error('Server response wasn\'t OK');
                 }
-            } else {
-                alert("Please fill out all fields.");
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                showNotificationToast('Failed to send your message. Please try again later.', 'error');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            });
+        });
+
+        document.getElementById("contactMeBtn").addEventListener("click", () => {
+            const Name = document.getElementById("Name").value;
+            const Email = document.getElementById("Email").value;
+            const Phone = document.getElementById("Phone").value;
+            const Message = document.getElementById("Message").value;
+
+            if (!Name || !Email || !Phone || !Message) {
+                showNotificationToast('Please fill out all fields.', 'error');
+                return false;
             }
         });
     </script>
+    
+    <!--Manual send Email -->
     <script>
-        function sendEmail() {
+        function ManualsendEmail() {
             const name = document.getElementById("Name").value;
             const email = document.getElementById("Email").value;
             const phone = document.getElementById("Phone").value;
@@ -136,9 +155,7 @@
                     Name: ${name}
                     Email: ${email}
                     Phone: ${phone}
-        
-                    Message:
-                    ${message}
+                    Message: ${message}
                 `;
                 // Construct the mailto link with the subject and body
                 const mailtoLink = `mailto:thirusubramaniyan2001@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -146,29 +163,109 @@
                 // Open the default email client with the pre-populated email
                 window.location.href = mailtoLink;
             } else {
-                alert("Please fill out all fields.");
+                showNotificationToast('Please fill out all fields.', 'error');
             }
         } 
     </script>
+
+    <!-- show Tosat Message  -->
     <script>
-        // Function to show the toast
-        function showToast() {
-            const toast = document.getElementById('toast');
-            const cancelIcon = document.getElementById('cancel-icon');
-        
-            // Show the toast for 5 seconds
-            toast.style.opacity = 1;
+        function showNotificationToast(message, type = 'success') {
+            const toast = document.getElementById('notification-toast');
+            const messageElement = document.getElementById('notification-message');
+            
+            // Set message and type
+            messageElement.textContent = message;
+            toast.style.display = 'flex';
+            toast.className = `toast ${type}`;
+            
+            // Show toast
             setTimeout(() => {
-            toast.style.opacity = 0;
-            }, 3000);
+                toast.classList.add('show');
+            }, 100);
         
-            // Hide the toast when the cancel icon is clicked
-            cancelIcon.addEventListener('click', () => {
-            toast.style.opacity = 0;
-            });
+            // Auto hide after 3 seconds
+            setTimeout(() => {
+                hideNotificationToast();
+            }, 5000);
         }
-        // Call showToast to display the toast message
-        showToast();
+        function hideNotificationToast() {
+            const toast = document.getElementById('notification-toast');
+            toast.classList.remove('show');
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 300);
+        }
+    </script>
+
+    <!-- Auto Generate Mail -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" > </script>
+    <script type="text/javascript">
+        (function() {
+        emailjs.init("QIbss_9AfhlYvV-zX");
+        })(); 
+    </script>
+    <script>
+        function sendEmail(){
+            var email=document.getElementById("Email").value;
+            var to_name=document.getElementById("Name").value;
+            var message=document.getElementById("Message").value;
+        
+            var templateParams = {
+                email: email,
+                to_name: to_name,
+                message: message
+              };
+        
+              emailjs.send('service_05nil4h', 'template_xfojdaw', templateParams)
+          .then(function(response) {
+             console.log('SUCCESS!', response.status, response.text);
+          })    
+        }
+    </script>
+
+    <!-- whatsapp -->
+    <script>
+        const swipeBtn = document.getElementById("swipeBtn");
+        const swipeContainer = document.querySelector(".swipe-container");
+        const swipeTrackWidth = swipeContainer.offsetWidth;
+        const buttonWidth = swipeBtn.offsetWidth;
+
+        let isDragging = false;
+        let startX;
+
+        swipeBtn.addEventListener("mousedown", (e) => {
+            isDragging = true;
+            startX = e.clientX - swipeBtn.offsetLeft;
+            swipeBtn.style.cursor = "grabbing";
+        });
+
+        document.addEventListener("mousemove", (e) => {
+            if (!isDragging) return;
+
+            let x = e.clientX - startX;
+            x = Math.max(0, Math.min(x, swipeTrackWidth - buttonWidth));
+
+            swipeBtn.style.left = `${x}px`;
+
+            if (x >= swipeTrackWidth - buttonWidth) {
+                isDragging = false;
+                swipeBtn.style.left = "0px";
+                swipeBtn.style.cursor = "grab";
+                const phoneNumber = "7339225958"; 
+                const message = encodeURIComponent("Hi! I'd like to contact you.");
+                const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+                window.open(whatsappURL, "_blank", "noopener,noreferrer");
+            }
+        });
+
+        document.addEventListener("mouseup", () => {
+            if (isDragging) {
+                isDragging = false;
+                swipeBtn.style.left = "0px";
+                swipeBtn.style.cursor = "grab";
+            }
+        });
     </script>
 </body>
 </html>

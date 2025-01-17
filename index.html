@@ -51,12 +51,7 @@
                         <a href="https://www.instagram.com/thirumurugan_subramaniyan/"  target="_blank"><i class="fa-brands fa-instagram"></i></a>
                         <button id="downloadBtn">Download CV</button>
                     </div>
-                    <div class="swipe-container" data-aos="fade-up" data-aos-duration="1000">
-                        <b>
-                            <div class="swipe-track"><span>Let's talk on WhatsApp</span></div>
-                            <div class="swipe-button" id="swipeBtn">➡</div>
-                        </b>
-                    </div>                                       
+                                                         
                 </div>
             </div>
         </section>
@@ -81,50 +76,6 @@
                 link.download = "Thiru_CV.pdf"; 
                 link.click(); 
             });
-        </script>
-        <script>
-            const swipeBtn = document.getElementById("swipeBtn");
-            const swipeContainer = document.querySelector(".swipe-container");
-            const swipeTrackWidth = swipeContainer.offsetWidth;
-            const buttonWidth = swipeBtn.offsetWidth;
-
-            let isDragging = false;
-            let startX;
-
-            swipeBtn.addEventListener("mousedown", (e) => {
-                isDragging = true;
-                startX = e.clientX - swipeBtn.offsetLeft;
-                swipeBtn.style.cursor = "grabbing";
-            });
-
-            document.addEventListener("mousemove", (e) => {
-                if (!isDragging) return;
-
-                let x = e.clientX - startX;
-                x = Math.max(0, Math.min(x, swipeTrackWidth - buttonWidth));
-
-                swipeBtn.style.left = `${x}px`;
-
-                if (x >= swipeTrackWidth - buttonWidth) {
-                    isDragging = false;
-                    swipeBtn.style.left = "0px";
-                    swipeBtn.style.cursor = "grab";
-                    const phoneNumber = "7339225958"; 
-                    const message = encodeURIComponent("Hi! I'd like to contact you.");
-                    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-                    window.open(whatsappURL, "_blank", "noopener,noreferrer");
-                }
-            });
-
-            document.addEventListener("mouseup", () => {
-                if (isDragging) {
-                    isDragging = false;
-                    swipeBtn.style.left = "0px";
-                    swipeBtn.style.cursor = "grab";
-                }
-            });
-
-
         </script>
         <script>
             function getGreeting() {
