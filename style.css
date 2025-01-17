@@ -312,13 +312,11 @@ section{
         margin-bottom: 0px;
     }
 }
-
-/* Add these styles to your existing CSS file */
 .main-container {
     display: flex;
     gap: 2rem;
     padding: 2rem;
-    height: calc(100vh - 100px); /* Adjust based on your nav height */
+    height: calc(100vh - 100px); 
 }
 
 .skills-section {
@@ -496,7 +494,7 @@ h3, .company, .period, .role {
 
 .toast {
     position: fixed;
-    top: 5%;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
     background-color: #333;
@@ -510,12 +508,36 @@ h3, .company, .period, .role {
     z-index: 9999;
     opacity: 1;
     transition: opacity 0.5s ease;
-  }
-  
-  .cancel-icon {
-    font-size: 20px;
+}        
+
+.toast.success {
+    background-color: #6cc76f;
+}
+
+.toast.error {
+    background-color: #9e3e37;
+}
+
+.cancel-icon {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 20px;
+    height: 20px;
+    background-color: #151414;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-  }
+    color: #fbf3f3;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+}
+.toast.show {
+    opacity: 1;
+}
   
   #toast-message {
     margin-right: 10px;
@@ -541,12 +563,10 @@ h3, .company, .period, .role {
     justify-content: center;
 }
 
-.swipe-track span {
-    font-size: 12px;
+.swipe-span {
     text-align: center;
-    color: antiquewhite;
     font-size: 0.9rem;
-    padding-left:45px;
+    padding-left:5px;
 }
 
 .swipe-button {
@@ -583,11 +603,6 @@ h3, .company, .period, .role {
     margin-bottom: 30px;
 }
 
-.envelope-icon {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 15px;
-}
 
 .contact-title {
     font-size: 24px;
@@ -669,11 +684,21 @@ textarea.form-input {
 }
 
 .contact-header p {
-    font-size: 16px;
+    font-size: 14px;
     color: #666;
     line-height: 1.6;
+    margin-bottom: 20px;
 }
-
+.contact-header i {
+    color: rgb(9, 9, 9);
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.contact-header span {
+    color: rgb(77, 73, 73);
+    font-size: 15px;
+    padding-left: 15px;
+}
 .contact-form {
     flex: 1;
     display: flex;
@@ -733,8 +758,7 @@ textarea.form-input {
 }
 
 .envelope-icon {
-    width: 32px;
-    height: 32px;
-    margin-bottom: 20px;
-    color: rgb(109,67, 0);
+    margin-top: -10px;
+    width: 30%;
+    height: 30%;
 }
