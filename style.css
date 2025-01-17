@@ -205,18 +205,22 @@ section{
 }
 
 @keyframes words {
-    0%, 33%{
+    0%, 20%{
         content: "Software Developer";
     }
-    34%, 66%{
+    21%, 40%{
         content: "Python Developer";
     }
-    67%, 85%{
-        content: "Prompt Engineer";
+    41%, 60%{
+        content: "Full Stack Developer";
     }
-    86%, 100%{
+    61%, 80%{
         content: "Back End Developer";
     }
+    81%, 100%{
+        content: "AL/ML Engineer";
+    }
+
 }
 
 .content p{
@@ -312,6 +316,8 @@ section{
         margin-bottom: 0px;
     }
 }
+
+
 .main-container {
     display: flex;
     gap: 2rem;
@@ -456,7 +462,7 @@ li {
 }
 
 /* Responsive styles */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .main-container {
         flex-direction: column;
         height: auto;
@@ -497,8 +503,8 @@ h3, .company, .period, .role {
     top: 10%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #333;
-    color: white;
+    background-color: #ac946b;
+    color: rgb(26, 25, 25);
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 5px;
@@ -762,3 +768,22 @@ textarea.form-input {
     width: 30%;
     height: 30%;
 }
+
+
+.toast1 {
+    position: fixed;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ac946b;
+    color: rgb(18, 17, 17);
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}   
