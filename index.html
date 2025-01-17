@@ -37,7 +37,7 @@
         <section>
             <div class="main-container">
                 <div class="image" data-aos="zoom-in-right" data-aos-duration="2500">
-                    <img src="Assest/Image12.png" alt="">
+                    <img src="Assest/Image12.png" alt="Home Image" title="Home Image">
                 </div>
                 <div class="content">
                     <h1 data-aos="fade-left" data-aos-duration="1000" data-aos-delay="800">Hey I'm <span>Thirumurugan Subramaniyan</span></h1>
@@ -51,8 +51,7 @@
                         <a href="https://www.instagram.com/thirumurugan_subramaniyan/"  target="_blank"><i class="fa-brands fa-instagram"></i></a>
                         <a href="https://www.facebook.com/profile.php?id=100025604958590"  target="_blank"><i class="fa-brands fa-facebook"></i></a>
                         <button id="downloadBtn">Download CV</button>
-                    </div>
-                                                         
+                    </div>                                            
                 </div>
             </div>
         </section>
@@ -77,34 +76,80 @@
                 link.download = "Thiru_CV.pdf"; 
                 link.click(); 
             });
-        </script>
+        </script>    
         <script>
-            function getGreeting() {
-              const hour = new Date().getHours();
-              if (hour < 12) {
-                return 'Good Morning';
-              } else if (hour < 18) {
-                return 'Good Afternoon';
-              } else {
-                return 'Good Evening';
-              }
-            }
-        
-            function showToast() {
-                const toast = document.getElementById('toast-message');
-                const greeting = getGreeting();
-                toast.innerHTML = `${greeting}, Thank you for visiting website.`;
-                toast.classList.add("show");
-                
-                toast.style.opacity = 1;
-                setTimeout(() => {
-                toast.style.opacity = 0;
-                }, 3000);
-            }
-            
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            const cancelIcon = document.getElementById('cancel-icon');
+            const TOAST_DURATION = 150000;
+            let toastTimeout;
 
-            showToast();
-          </script>
-        
+            function getGreeting() {
+                const hour = new Date().getHours();
+                if (hour < 12) {
+                    return 'Good Morning';
+                } else if (hour < 18) {
+                    return 'Good Afternoon';
+                } else {
+                    return 'Good Evening';
+                }
+            }
+
+            function createToastElements() {
+                const toastDiv = document.createElement('div');
+                toastDiv.id = 'toast';
+                toastDiv.className = 'toast1';
+
+                const messageSpan = document.createElement('span');
+                messageSpan.id = 'toast-message';
+
+                const cancelSpan = document.createElement('span');
+                cancelSpan.id = 'cancel-icon';
+                cancelSpan.className = 'cancel-icon';
+                cancelSpan.textContent = '×';
+
+                toastDiv.appendChild(messageSpan);
+                toastDiv.appendChild(cancelSpan);
+
+                document.body.appendChild(toastDiv);
+                return { toastDiv, messageSpan, cancelSpan };
+            }
+
+            function showToast() {
+                if (localStorage.getItem('hasVisited')) {
+                    const existingToast = document.getElementById('toast');
+                    if (existingToast) {
+                        existingToast.remove();
+                    }
+                    return;
+                }
+
+                localStorage.setItem('hasVisited', 'true');
+                const { toastDiv, messageSpan, cancelSpan } = createToastElements();
+                
+                if (toastTimeout) {
+                    clearTimeout(toastTimeout);
+                }
+
+                const greeting = getGreeting();
+                messageSpan.textContent = `${greeting}, Welcome, explore, discover, connect, engage`;
+                toastDiv.style.display = 'flex';
+                toastDiv.style.opacity = '1';
+                cancelSpan.addEventListener('click', () => hideToast(toastDiv));
+                
+                toastTimeout = setTimeout(() => {
+                    hideToast(toastDiv);
+                }, TOAST_DURATION);
+            }
+
+            function hideToast(toastElement) {
+                toastElement.style.opacity = '0';
+                setTimeout(() => {
+                    toastElement.remove();
+                }, 300);
+            }
+            document.addEventListener('DOMContentLoaded', showToast);
+        </script>
+
 </body>
 </html>
