@@ -205,18 +205,22 @@ section{
 }
 
 @keyframes words {
-    0%, 33%{
+    0%, 20%{
         content: "Software Developer";
     }
-    34%, 66%{
+    21%, 40%{
         content: "Python Developer";
     }
-    67%, 85%{
-        content: "Prompt Engineer";
+    41%, 60%{
+        content: "Full Stack Developer";
     }
-    86%, 100%{
+    61%, 80%{
         content: "Back End Developer";
     }
+    81%, 100%{
+        content: "AL/ML Engineer";
+    }
+
 }
 
 .content p{
