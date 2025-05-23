@@ -27,129 +27,122 @@
             <div class="links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
-                <a href="skills.html">Skills and Experience
-                </a>
+                <a href="skills.html">Skills and Experience</a>
                 <a href="contact.html">Contact Us</a>
                 <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
             </div>
         </div>
     </nav>
-        <section>
-            <div class="main-container">
-                <div class="image" data-aos="zoom-in-right" data-aos-duration="2500">
-                    <img src="Assest/Image12.png" alt="Home Image" title="Home Image">
-                </div>
-                <div class="content">
-                    <h1 data-aos="fade-left" data-aos-duration="1000" data-aos-delay="800">Hey I'm <span>Thirumurugan Subramaniyan</span></h1>
-                    <div class="typewriter" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="900">I'm a <span></span></div>
-                    <p data-aos="flip-up" data-aos-duration="1000" data-aos-delay="1000" style="text-align: justify;">
-                        I'm a Software Engineer with a passion for crafting AI-powered applications that push technological boundaries. Specializing in full-stack development, I leverage Python, JavaScript, and modern frameworks to build robust APIs and integrate complex systems. My expertise spans cloud platforms like Azure OpenAI Service and AWS Bedrock, enabling me to develop cutting-edge AI solutions that address real-world challenges. With deep knowledge in both SQL and NoSQL databases, I excel at optimizing data structures and application performance. I bring hands-on experience in RAG-based solutions, automation testing, and CI/CD pipelines, ensuring seamless deployment of scalable applications. What drives me is the opportunity to transform innovative ideas into impactful solutions, consistently delivering value through my expertise in frontend technologies like React, backend frameworks, and modern development tools.</p>
-                    <div class="social-links" data-aos="flip-down" data-aos-duration="1000" data-aos-delay="1200">
-                        <a href="https://github.com/thirumurugan2001"  target="_blank"><i class="fa-brands fa-github"></i></a>
-                        <a href="https://www.hackerrank.com/profile/thirusubramaniy1"  target="_blank" ><i class="fa-brands fa-hackerrank"></i></a>
-                        <a href="https://www.linkedin.com/in/thirumurugan-subramaniyan-a62351212/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="https://www.instagram.com/thirumurugan_subramaniyan/"  target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/profile.php?id=100025604958590"  target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                        <button id="downloadBtn">Download CV</button>
-                    </div>                                            
+    
+    <section>
+        <div class="main-container">
+            <div class="image" data-aos="zoom-in-right" data-aos-duration="2500">
+                <img src="Assest/Image12.png" alt="Home Image" title="Home Image">
+            </div>
+            <div class="content">
+                <h1 data-aos="fade-left" data-aos-duration="1000" data-aos-delay="800">Hey I'm <span>Thirumurugan Subramaniyan</span></h1>
+                <div class="typewriter" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="900">I'm a <span></span></div>
+                <p data-aos="flip-up" data-aos-duration="1000" data-aos-delay="1000" style="text-align: justify;">
+                    I'm a Software Engineer with a passion for crafting AI-powered applications that push technological boundaries. Specializing in full-stack development, I leverage Python, JavaScript, and modern frameworks to build robust APIs and integrate complex systems. My expertise spans cloud platforms like Azure OpenAI Service and AWS Bedrock, enabling me to develop cutting-edge AI solutions that address real-world challenges. With deep knowledge in both SQL and NoSQL databases, I excel at optimizing data structures and application performance. I bring hands-on experience in RAG-based solutions, automation testing, and CI/CD pipelines, ensuring seamless deployment of scalable applications. What drives me is the opportunity to transform innovative ideas into impactful solutions, consistently delivering value through my expertise in frontend technologies like React, backend frameworks, and modern development tools.
+                </p>
+                <div class="social-links" data-aos="flip-down" data-aos-duration="1000" data-aos-delay="1200">
+                    <a href="https://github.com/thirumurugan2001" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.hackerrank.com/profile/thirusubramaniy1" target="_blank"><i class="fa-brands fa-hackerrank"></i></a>
+                    <a href="https://www.linkedin.com/in/thirumurugan-subramaniyan-a62351212/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/thirumurugan_subramaniyan/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100025604958590" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <button id="downloadBtn">Download CV</button>
                 </div>
             </div>
-        </section>
-        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <script>
-          AOS.init({offset:0});
-        </script>
-        <script>
-            function hamburg(){
-                const navbar = document.querySelector(".dropdown")
-                navbar.style.transform = "translateY(0px)"
-            }
-            function cancel(){
-                const navbar = document.querySelector(".dropdown")
-                navbar.style.transform = "translateY(-500px)"
-            }
-        </script>
-        <script>
-            document.getElementById("downloadBtn").addEventListener("click", function () {
-                const link = document.createElement("a");
-                link.href = "Thirumurugan_CV_dark.pdf";
-                link.download = "Thiru_CV.pdf"; 
-                link.click(); 
-            });
-        </script>    
-        <script>
-            const toast = document.getElementById('toast');
-            const toastMessage = document.getElementById('toast-message');
-            const cancelIcon = document.getElementById('cancel-icon');
-            const TOAST_DURATION = 150000;
-            let toastTimeout;
+        </div>
+    </section>
 
-            function getGreeting() {
-                const hour = new Date().getHours();
-                if (hour < 12) {
-                    return 'Good Morning';
-                } else if (hour < 18) {
-                    return 'Good Afternoon';
-                } else {
-                    return 'Good Evening';
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({offset:0});
+    </script>
+    <script>
+        function hamburg(){
+            const navbar = document.querySelector(".dropdown")
+            navbar.style.transform = "translateY(0px)"
+        }
+        function cancel(){
+            const navbar = document.querySelector(".dropdown")
+            navbar.style.transform = "translateY(-500px)"
+        }
+    </script>
+    <script>
+        document.getElementById("downloadBtn").addEventListener("click", function () {
+            const link = document.createElement("a");
+            link.href = "Thirumurugan_CV_dark.pdf";
+            link.download = "Thiru_CV.pdf"; 
+            link.click();
+        });
+    </script>
+    <script>
+        const TOAST_DURATION = 150000;
+        let toastTimeout;
+
+        function getGreeting() {
+            const hour = new Date().getHours();
+            if (hour < 12) {
+                return 'Good Morning';
+            } else if (hour < 18) {
+                return 'Good Afternoon';
+            } else {
+                return 'Good Evening';
+            }
+        }
+
+        function createToastElements() {
+            const toastDiv = document.createElement('div');
+            toastDiv.id = 'toast';
+            toastDiv.className = 'toast1';
+            const messageSpan = document.createElement('span');
+            messageSpan.id = 'toast-message';
+            const cancelSpan = document.createElement('span');
+            cancelSpan.id = 'cancel-icon';
+            cancelSpan.className = 'cancel-icon';
+            cancelSpan.textContent = '×';
+            toastDiv.appendChild(messageSpan);
+            toastDiv.appendChild(cancelSpan);
+            document.body.appendChild(toastDiv);
+            return { toastDiv, messageSpan, cancelSpan };
+        }
+
+        function showToast() {
+            if (localStorage.getItem('hasVisited')) {
+                const existingToast = document.getElementById('toast');
+                if (existingToast) {
+                    existingToast.remove();
                 }
+                return;
             }
-
-            function createToastElements() {
-                const toastDiv = document.createElement('div');
-                toastDiv.id = 'toast';
-                toastDiv.className = 'toast1';
-
-                const messageSpan = document.createElement('span');
-                messageSpan.id = 'toast-message';
-
-                const cancelSpan = document.createElement('span');
-                cancelSpan.id = 'cancel-icon';
-                cancelSpan.className = 'cancel-icon';
-                cancelSpan.textContent = '×';
-
-                toastDiv.appendChild(messageSpan);
-                toastDiv.appendChild(cancelSpan);
-
-                document.body.appendChild(toastDiv);
-                return { toastDiv, messageSpan, cancelSpan };
+            localStorage.setItem('hasVisited', 'true');
+            const { toastDiv, messageSpan, cancelSpan } = createToastElements();
+            
+            if (toastTimeout) {
+                clearTimeout(toastTimeout);
             }
+            const greeting = getGreeting();
+            messageSpan.textContent = `${greeting}, Welcome, explore, discover, connect, engage`;
+            toastDiv.style.display = 'flex';
+            toastDiv.style.opacity = '1';
+            cancelSpan.addEventListener('click', () => hideToast(toastDiv));
+            
+            toastTimeout = setTimeout(() => {
+                hideToast(toastDiv);
+            }, TOAST_DURATION);
+        }
 
-            function showToast() {
-                if (localStorage.getItem('hasVisited')) {
-                    const existingToast = document.getElementById('toast');
-                    if (existingToast) {
-                        existingToast.remove();
-                    }
-                    return;
-                }
+        function hideToast(toastElement) {
+            toastElement.style.opacity = '0';
+            setTimeout(() => {
+                toastElement.remove();
+            }, 300);
+        }
 
-                localStorage.setItem('hasVisited', 'true');
-                const { toastDiv, messageSpan, cancelSpan } = createToastElements();
-                
-                if (toastTimeout) {
-                    clearTimeout(toastTimeout);
-                }
-
-                const greeting = getGreeting();
-                messageSpan.textContent = `${greeting}, Welcome, explore, discover, connect, engage`;
-                toastDiv.style.display = 'flex';
-                toastDiv.style.opacity = '1';
-                cancelSpan.addEventListener('click', () => hideToast(toastDiv));
-                
-                toastTimeout = setTimeout(() => {
-                    hideToast(toastDiv);
-                }, TOAST_DURATION);
-            }
-
-            function hideToast(toastElement) {
-                toastElement.style.opacity = '0';
-                setTimeout(() => {
-                    toastElement.remove();
-                }, 300);
-            }
-            document.addEventListener('DOMContentLoaded', showToast);
-        </script>
-
+        document.addEventListener('DOMContentLoaded', showToast);
+    </script>
 </body>
 </html>
