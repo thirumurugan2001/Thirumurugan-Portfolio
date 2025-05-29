@@ -164,6 +164,12 @@ section {
     width: 100%;
     height: auto;
     object-fit: contain;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.main-container .image img:hover {
+    transform: scale(1.02);
 }
 
 .main-container .content {
@@ -239,6 +245,7 @@ section {
     font-size: clamp(0.9rem, 1.5vw, 1rem);
     margin: 15px 0;
     line-height: 1.6;
+    text-align: justify;
 }
 
 .social-links {
@@ -248,231 +255,177 @@ section {
     gap: 10px;
     margin-top: 20px;
 }
-
 .social-links a {
-    display: inline-block;
+    text-decoration: none;
+    color: black;
+    transition: 0.3s ease;
 }
 
 .social-links i {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 3rem;
     height: 3rem;
-    background-color: transparent;
-    border: 0.2rem solid rgb(109,67,0);
+    background-color: white;
     border-radius: 50%;
-       color: rgb(109,67,0);
-    margin: 5px 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
     font-size: 1.5rem;
-    transition: 0.2s linear;
+    transition: 0.3s ease;
+    margin: 5px;
 }
 
 .social-links i:hover {
-    scale: 1.3;
     color: white;
     background-color: rgb(109,67,0);
-    filter: drop-shadow(0 0 10px rgb(109,67,0));
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(109, 67, 0, 0.4);
 }
 
 .content button {
     width: auto;
-    min-width: 150px;
-    padding: 10px 20px;
-    margin: 20px 0;
-    background-color: rgb(109,67,0);
-    color: white;
+    height: 50px;
     border: none;
     outline: none;
-    font-size: 1rem;
-    font-weight: 700;
-    border-radius: 5px;
-    transition: 0.2s linear;
+    background-color: rgb(109,67,0);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 10px;
     cursor: pointer;
+    padding: 0 20px;
+    margin: 10px 5px;
+    transition: 0.3s ease;
 }
 
 .content button:hover {
-    scale: 1.1;
-    color: rgb(109,67,0);
-    border: 2px solid rgb(109,67,0);
-    background-color: transparent;
-    font-weight: 700;
-    box-shadow: 0 0 40px rgb(109,67,0);
+    background-color: rgb(89, 47, 0);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(109, 67, 0, 0.3);
 }
 
 /* Toast notification styles */
 .toast1 {
     position: fixed;
-    top: 8%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #ac946b;
-    color: rgb(18, 17, 17);
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, rgb(109,67,0), rgb(139,97,30));
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    z-index: 9999;
-    opacity: 1;
-    transition: opacity 0.5s ease;
-    max-width: 90%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 300px;
+    max-width: 400px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
 }
 
-.cancel-icon {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    width: 20px;
-    height: 20px;
-    background-color: #151414;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: #fbf3f3;
-    font-size: 14px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: all 0.2s ease-in-out;
-}
-
-#toast-message {
+.toast1 #toast-message {
+    flex: 1;
     margin-right: 10px;
 }
 
-/* Media queries for responsive design */
-@media (max-width: 1200px) {
-    .main-container {
-        padding: 0 30px;
-    }
-    
-    .content h1 {
-        font-size: clamp(1.3rem, 2.5vw, 2.5rem);
-    }
-    
-    .content .typewriter {
-        font-size: clamp(1rem, 1.8vw, 1.8rem);
-    }
-    
-    .content .typewriter span {
-        font-size: clamp(1.3rem, 2.2vw, 2.2rem);
-    }
+.cancel-icon {
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0 5px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
 }
 
-@media (max-width: 992px) {
-    .main-container {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .main-container .image,
-    .main-container .content {
-        max-width: 100%;
-    }
-    
-    .main-container .image {
-        margin-bottom: 20px;
-    }
-    
-    .social-links {
-        justify-content: center;
-    }
-    
-    .content button {
-        display: block;
-        margin: 20px auto;
-    }
+.cancel-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-@media (max-width: 768px) {
-    body {
-        overflow-y: auto;
-    }
-    
-    nav .logo {
-        position: absolute;
-        top: 16px;
-        left: 15px;
-        font-size: 1.5rem;
-    }
-    
-    .nav-container .links {
-        display: none;
-    }
-    
-    .hamburg, .cancel {
-        display: block;
-    }
-    
-    .main-container {
-        padding: 0 20px;
-    }
-    
-    .main-container .content {
-        width: 100%;
-        text-align: center;
-    }
-    
-    .content p {
-        text-align: left;
-    }
-    
-    .social-links {
-        justify-content: center;
-    }
-    
-    .social-links i {
-        width: 2.5rem;
-        height: 2.5rem;
-        font-size: 1.5rem;
-    }
-    
-    .cancel {
-        color: white;
-    }
+/* About Page Specific Styles */
+.about-main-container {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: auto 1fr;
+    gap: 2rem;
+    height: calc(100vh - 80px);
+    padding: 2rem;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-@media (max-width: 480px) {
-    .logo span a {
-        font-size: 1.2rem;
-    }
-    
-    .main-container {
-        padding: 0 15px;
-    }
-    
-    .content h1 {
-        font-size: clamp(1.2rem, 5vw, 1.8rem);
-    }
-    
-    .content .typewriter {
-        font-size: clamp(0.9rem, 4vw, 1.5rem);
-    }
-    
-    .content .typewriter span {
-        font-size: clamp(1.1rem, 4.5vw, 1.8rem);
-    }
-    
-    .social-links i {
-        width: 2.2rem;
-        height: 2.2rem;
-        font-size: 1.2rem;
-        margin: 3px 5px;
-    }
-    
-    .content button {
-        width: 100%;
-        max-width: 200px;
-        font-size: 0.9rem;
-    }
+/* Image container styling */
+.about-main-container .about-image {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    position: sticky;
+    top: 2rem;
+    height: 90%;
+    width: 80%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.about-main-container .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+}
+
+.about-scrollable-content {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    overflow-y: auto;
+    padding-right: 1rem;
+    max-height: calc(100vh - 120px);
+}
+
+/* Typography for scrollable content */
+.about-scrollable-content h2 {
+    font-size: 1.1rem;
+    color: rgb(109,67, 0);
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.about-scrollable-content p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+/* Custom scrollbar for about content */
+.about-scrollable-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.about-scrollable-content::-webkit-scrollbar-track {
+    background: rgba(109, 67, 0, 0.1);
+    border-radius: 10px;
+}
+
+.about-scrollable-content::-webkit-scrollbar-thumb {
+    background: rgba(109, 67, 0, 0.3);
+    border-radius: 10px;
+}
+
+.about-scrollable-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(109, 67, 0, 0.5);
 }
 
 /* Skills and Experience page styles */
-.skills-section, 
-.experience-section {
+.skills-section, .experience-section {
     flex: 1;
     color: rgb(109,67,0);
     backdrop-filter: blur(10px);
@@ -486,7 +439,7 @@ section {
 }
 
 @media (min-width: 992px) {
-    .skills-section, 
+    .skills-section,     
     .experience-section {
         width: 48%;
     }
@@ -542,14 +495,1486 @@ section {
     gap: 20px;
 }
 
-@media (max-width: 768px) {
+/* Media queries for responsive design */
+@media (max-width: 1200px) {
+    .main-container {
+        padding: 0 30px;
+    }
+        
+    .content h1 {
+        font-size: clamp(1.3rem, 2.5vw, 2.5rem);
+    }
+        
+    .content .typewriter {
+        font-size: clamp(1rem, 1.8vw, 1.8rem);
+    }
+        
+    .content .typewriter span {
+        font-size: clamp(1.3rem, 2.2vw, 2.2rem);
+    }
+
+    /* About page responsive adjustments */
+    .about-main-container {
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .about-scrollable-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .about-scrollable-content p {
+        font-size: 1rem;
+    }
+
+    /* Toast responsive adjustments */
+    .toast1 {
+        min-width: 280px;
+        max-width: 350px;
+        font-size: 0.85rem;
+        padding: 12px 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    .main-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 20px;
+    }
+        
+    .main-container .image,
+    .main-container .content {
+        max-width: 100%;
+        min-width: 280px;
+    }
+        
+    .main-container .image {
+        margin-bottom: 20px;
+        order: 1;
+    }
+
+    .main-container .content {
+        order: 2;
+        text-align: center;
+    }
+
+    .content p {
+        text-align: justify;
+    }
+        
+    .social-links {
+        justify-content: center;
+    }
+        
+    .content button {
+        display: block;
+        margin: 20px auto;
+    }
+
+    /* About page mobile layout */
+    .about-main-container {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow: visible;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .about-main-container .about-image {
+        grid-column: 1;
+        grid-row: 1;
+        position: relative;
+        top: 0;
+        width: 100%;
+        height: auto;
+        max-width: 400px;
+        margin: 0 auto 1rem auto;
+        padding: 0;
+    }
+
+    .about-main-container .about-image img {
+        height: auto;
+        max-height: 400px;
+    }
+
+    .about-scrollable-content {
+        grid-column: 1;
+        grid-row: 2;
+        overflow: visible;
+        padding-right: 0;
+        max-height: none;
+    }
+
+    .about-scrollable-content h2 {
+        font-size: 1.3rem;
+        margin-top: 1.5rem;
+    }
+
+    .about-scrollable-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    /* Contact page responsive */
     .contact-container {
         flex-direction: column;
         padding: 20px;
     }
-    
+        
     .contact-header {
         padding-right: 0;
         text-align: center;
     }
+
+    /* Toast adjustments */
+    .toast1 {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        min-width: auto;
+        max-width: none;
+    }
 }
+
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+    }
+        
+    nav .logo {
+        position: absolute;
+        top: 16px;
+        left: 15px;
+        font-size: 1.5rem;
+    }
+        
+    .nav-container .links {
+        display: none;
+    }
+        
+    .hamburg, .cancel {
+        display: block;
+    }
+        
+    .main-container {
+        padding: 0 20px;
+        gap: 15px;
+    }
+        
+    .main-container .content {
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-container .image {
+        max-width: 350px;
+    }
+        
+    .content p {
+        text-align: justify;
+        font-size: 0.95rem;
+    }
+        
+    .social-links {
+        justify-content: center;
+        gap: 8px;
+    }
+        
+    .social-links i {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.5rem;
+    }
+        
+    .cancel {
+        color: white;
+    }
+
+    /* About page tablet adjustments */
+    .about-main-container {
+        padding: 1rem;
+    }
+
+    .about-main-container .about-image {
+        max-width: 350px;
+    }
+
+    .about-scrollable-content h2 {
+        font-size: 1.4rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .about-scrollable-content p {
+        font-size: 0.95rem;
+        text-align: justify;
+    }
+
+    .logo span a {
+        font-size: 1.3rem;
+    }
+
+    /* Toast mobile adjustments */
+    .toast1 {
+        font-size: 0.8rem;
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo span a {
+        font-size: 1.2rem;
+    }
+        
+    .main-container {
+        padding: 0 15px;
+        gap: 10px;
+    }
+
+    .main-container .image {
+        max-width: 300px;
+    }
+        
+    .content h1 {
+        font-size: clamp(1.2rem, 5vw, 1.8rem);
+    }
+        
+    .content .typewriter {
+        font-size: clamp(0.9rem, 4vw, 1.5rem);
+    }
+        
+    .content .typewriter span {
+        font-size: clamp(1.1rem, 4.5vw, 1.8rem);
+    }
+
+    .content p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+        
+    .social-links i {
+        width: 2.2rem;
+        height: 2.2rem;
+        font-size: 1.2rem;
+        margin: 3px 5px;
+    }
+        
+    .content button {
+        width: 100%;
+        max-width: 200px;
+        font-size: 0.9rem;
+        height: 45px;
+    }
+
+    /* About page mobile phone adjustments */
+    .about-main-container {
+        padding: 0.5rem;
+    }
+
+    .about-main-container .about-image {
+        max-width: 280px;
+        margin-bottom: 1rem;
+    }
+
+    .about-scrollable-content h2 {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .about-scrollable-content p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .logo span a {
+        font-size: 1rem;
+    }
+
+    nav .logo {
+        font-size: 1.2rem;
+    }
+
+        .toast1 {
+        font-size: 0.75rem;
+        padding: 8px 10px;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+    }
+
+    .cancel-icon {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .main-container {
+        padding: 0 10px;
+    }
+
+    .main-container .image {
+        max-width: 250px;
+    }
+
+    .content h1 {
+        font-size: clamp(1rem, 5vw, 1.5rem);
+    }
+
+    .content .typewriter {
+        font-size: clamp(0.8rem, 4vw, 1.2rem);
+    }
+
+    .content .typewriter span {
+        font-size: clamp(1rem, 4.5vw, 1.5rem);
+    }
+
+    .content p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .social-links i {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+        margin: 2px 3px;
+    }
+
+    .content button {
+        font-size: 0.8rem;
+        height: 40px;
+        padding: 0 15px;
+    }
+
+    /* About page extra small devices */
+    .about-main-container {
+        padding: 0.25rem;
+    }
+
+    .about-main-container .about-image {
+        max-width: 250px;
+    }
+
+    .about-scrollable-content h2 {
+        font-size: 1.1rem;
+    }
+
+    .about-scrollable-content p {
+        font-size: 0.85rem;
+    }
+
+    .logo span a {
+        font-size: 0.9rem;
+    }
+
+    nav .logo {
+        font-size: 1rem;
+        left: 10px;
+    }
+
+    .hamburg {
+        right: 10px;
+        font-size: 1.5rem;
+    }
+
+    /* Toast extra small */
+    .toast1 {
+        font-size: 0.7rem;
+        padding: 6px 8px;
+    }
+
+    .cancel-icon {
+        font-size: 0.9rem;
+    }
+}
+
+/* Additional mobile optimizations for better touch interaction */
+@media (max-width: 768px) {
+    /* Improve touch targets */
+    .nav-container .links a {
+        padding: 10px 15px;
+        margin: 5px 0;
+    }
+
+    .dropdown .links a {
+        padding: 20px 0;
+        font-size: 1.1rem;
+    }
+
+    /* Better spacing for mobile */
+    .content {
+        padding: 10px 0;
+    }
+
+    .social-links {
+        margin-top: 25px;
+        gap: 12px;
+    }
+
+    /* Improve button accessibility */
+    .content button {
+        min-height: 48px;
+        font-size: 1rem;
+        margin-top: 15px;
+    }
+}
+
+/* Landscape orientation optimizations */
+@media (max-width: 768px) and (orientation: landscape) {
+    .main-container {
+        flex-direction: row;
+        align-items: center;
+        min-height: 100vh;
+        padding: 10px 20px;
+    }
+
+    .main-container .image {
+        flex: 0 0 40%;
+        max-width: 300px;
+        order: 1;
+    }
+
+    .main-container .content {
+        flex: 1;
+        order: 2;
+        padding-left: 20px;
+    }
+
+    .content h1 {
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
+        margin-bottom: 5px;
+    }
+
+    .content .typewriter {
+        font-size: clamp(1rem, 2.5vw, 1.4rem);
+        margin-bottom: 10px;
+    }
+
+    .content p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin: 10px 0;
+    }
+
+    .social-links {
+        margin-top: 15px;
+        gap: 8px;
+    }
+
+    .social-links i {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+    }
+
+    .content button {
+        height: 40px;
+        font-size: 0.9rem;
+        margin-top: 10px;
+    }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .main-container .image img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .typewriter span::after {
+        animation: none;
+    }
+
+    .typewriter span::before {
+        animation: none;
+        content: "Software Developer";
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(to right, rgb(20,20,20), rgb(40,30,20));
+        color: white;
+    }
+
+    .nav-container .links a {
+        color: white;
+    }
+
+    .main-container .content {
+        color: white;
+    }
+
+    .content p {
+        color: #e0e0e0;
+    }
+
+    .social-links i {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+
+    .social-links i:hover {
+        background-color: rgb(109,67,0);
+        color: white;
+    }
+
+    .toast1 {
+        background: linear-gradient(135deg, rgb(60,40,10), rgb(80,60,20));
+    }
+}
+
+/* Print styles */
+@media print {
+    nav, .social-links, .toast1 {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .main-container {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .content h1, .content .typewriter {
+        color: black;
+        text-shadow: none;
+    }
+
+    .content button {
+        display: none;
+    }
+}
+
+/* Focus styles for accessibility */
+.nav-container .links a:focus,
+.social-links a:focus,
+.content button:focus {
+    outline: 2px solid rgb(109,67,0);
+    outline-offset: 2px;
+}
+
+/* Loading animation for images */
+.main-container .image img {
+    opacity: 0;
+    animation: fadeInImage 1s ease-in-out forwards;
+}
+
+@keyframes fadeInImage {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection styles */
+::selection {
+    background-color: rgba(109, 67, 0, 0.3);
+    color: inherit;
+}
+
+::-moz-selection {
+    background-color: rgba(109, 67, 0, 0.3);
+    color: inherit;
+}
+
+/* Skills and Experience Page Styles */
+.skills-experience-section {
+    min-height: calc(100vh - 80px);
+    padding: 2rem;
+    background: linear-gradient(to right, rgb(74,74,74), rgb(138,43,226));
+}
+
+.skills-experience-container {
+    display: flex;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: calc(100vh - 120px);
+}
+
+/* Skills Section Styling */
+.skills-section {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.skills-section h2 {
+    color: rgb(109, 67, 0);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    border-bottom: 3px solid rgb(109, 67, 0);
+    padding-bottom: 0.5rem;
+}
+
+.skill-category {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background: rgba(109, 67, 0, 0.05);
+    border-radius: 10px;
+    border-left: 4px solid rgb(109, 67, 0);
+}
+
+.skill-category h3 {
+    color: rgb(109, 67, 0);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.skill-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.skill-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.skill-icon:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(109, 67, 0, 0.2);
+}
+
+.skill-icon i {
+    font-size: 2rem;
+    color: rgb(109, 67, 0);
+    margin-bottom: 0.5rem;
+}
+
+.skill-icon img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+.skill-icon span {
+    font-size: 0.8rem;
+    color: #333;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Experience Section Styling */
+.experience-section {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.experience-section h2 {
+    color: rgb(109, 67, 0);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    border-bottom: 3px solid rgb(109, 67, 0);
+    padding-bottom: 0.5rem;
+}
+
+.experience-item {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid rgb(109, 67, 0);
+}
+
+.experience-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(109, 67, 0, 0.15);
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.experience-item h3 {
+    color: rgb(109, 67, 0);
+    font-size: 1.3rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.toggle-icon {
+    font-size: 1.5rem;
+    color: rgb(109, 67, 0);
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.experience-item.expanded .toggle-icon {
+    transform: rotate(45deg);
+}
+
+.company {
+    font-weight: 600;
+    color: #333;
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+.period {
+    color: #666;
+    font-style: italic;
+    margin: 0.5rem 0;
+}
+
+.role {
+    color: #555;
+    font-size: 0.95rem;
+    margin: 0.5rem 0;
+    line-height: 1.4;
+}
+
+.extra-details {
+    display: none;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid rgba(109, 67, 0, 0.1);
+}
+
+.extra-details ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.extra-details li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+.project {
+    background: rgba(109, 67, 0, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    border-left: 3px solid rgb(109, 67, 0);
+}
+
+.project h4 {
+    color: rgb(109, 67, 0);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.project p {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+    color: #555;
+}
+
+.project strong {
+    color: rgb(109, 67, 0);
+}
+
+/* Toast Notification for Skills Page */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, rgb(109,67,0), rgb(139,97,30));
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 300px;
+    max-width: 400px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.toast #toast-message {
+    flex: 1;
+    margin-right: 10px;
+}
+
+/* Custom Scrollbar for Skills and Experience Sections */
+.skills-section::-webkit-scrollbar,
+.experience-section::-webkit-scrollbar {
+    width: 8px;
+}
+
+.skills-section::-webkit-scrollbar-track,
+.experience-section::-webkit-scrollbar-track {
+    background: rgba(109, 67, 0, 0.1);
+    border-radius: 10px;
+}
+
+.skills-section::-webkit-scrollbar-thumb,
+.experience-section::-webkit-scrollbar-thumb {
+    background: rgba(109, 67, 0, 0.3);
+    border-radius: 10px;
+}
+
+.skills-section::-webkit-scrollbar-thumb:hover,
+.experience-section::-webkit-scrollbar-thumb:hover {
+    background: rgba(109, 67, 0, 0.5);
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 1200px) {
+    .skills-experience-container {
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+    
+    .skills-section,
+    .experience-section {
+        padding: 1.5rem;
+    }
+    
+    .skill-icons {
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+        gap: 0.8rem;
+    }
+    
+    .skill-icon {
+        padding: 0.8rem;
+    }
+    
+    .skill-icon i {
+        font-size: 1.8rem;
+    }
+    
+    .skill-icon img {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 992px) {
+    .skills-experience-section {
+        padding: 1rem;
+    }
+    
+    .skills-experience-container {
+        flex-direction: column;
+        height: auto;
+        gap: 1rem;
+    }
+    
+    .skills-section,
+    .experience-section {
+        flex: none;
+        width: 100%;
+        max-height: 70vh;
+        padding: 1.5rem;
+    }
+    
+    .skills-section h2,
+    .experience-section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .skill-category {
+        margin-bottom: 2rem;
+        padding: 1rem;
+    }
+    
+    .skill-category h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .skill-icons {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+        gap: 0.6rem;
+    }
+    
+    .skill-icon {
+        padding: 0.6rem;
+    }
+    
+    .skill-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .skill-icon img {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .skill-icon span {
+        font-size: 0.7rem;
+    }
+    
+    .experience-item {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .experience-item h3 {
+        font-size: 1.2rem;
+    }
+    
+    .company {
+        font-size: 1rem;
+    }
+    
+    .role {
+        font-size: 0.9rem;
+    }
+    
+    .project {
+        padding: 0.8rem;
+        margin: 0.8rem 0;
+    }
+    
+    .project h4 {
+        font-size: 1rem;
+    }
+    
+    /* Toast adjustments for tablet */
+    .toast {
+        min-width: 280px;
+        max-width: 350px;
+        font-size: 0.85rem;
+        padding: 12px 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .skills-experience-section {
+        padding: 0.5rem;
+        min-height: auto;
+    }
+    
+    .skills-experience-container {
+        gap: 0.8rem;
+    }
+    
+    .skills-section,
+    .experience-section {
+        padding: 1rem;
+        max-height: 60vh;
+        border-radius: 10px;
+    }
+    
+    .skills-section h2,
+    .experience-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
+    .skill-category {
+        margin-bottom: 1.5rem;
+        padding: 0.8rem;
+    }
+    
+    .skill-category h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.6rem;
+        text-align: center;
+    }
+    
+    .skill-icons {
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+        gap: 0.5rem;
+    }
+    
+    .skill-icon {
+        padding: 0.5rem;
+    }
+    
+    .skill-icon i {
+        font-size: 1.3rem;
+    }
+    
+    .skill-icon img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .skill-icon span {
+        font-size: 0.65rem;
+    }
+    
+    .experience-item {
+        padding: 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .experience-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .toggle-icon {
+        align-self: flex-end;
+        margin-top: -1.5rem;
+    }
+    
+    .experience-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .company {
+        font-size: 0.95rem;
+    }
+    
+    .period,
+    .role {
+        font-size: 0.85rem;
+    }
+    
+    .extra-details {
+        margin-top: 0.8rem;
+        padding-top: 0.8rem;
+    }
+    
+    .extra-details li {
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .project {
+        padding: 0.6rem;
+        margin: 0.6rem 0;
+    }
+    
+    .project h4 {
+        font-size: 0.95rem;
+    }
+    
+    .project p {
+        font-size: 0.85rem;
+    }
+    
+    /* Toast mobile adjustments */
+    .toast {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        min-width: auto;
+        max-width: none;
+        font-size: 0.8rem;
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-experience-section {
+        padding: 0.25rem;
+    }
+    
+    .skills-experience-container {
+        gap: 0.5rem;
+    }
+    
+    .skills-section,
+    .experience-section {
+        padding: 0.8rem;
+        max-height: 50vh;
+        border-radius: 8px;
+    }
+    
+    .skills-section h2,
+    .experience-section h2 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .skill-category {
+        margin-bottom: 1rem;
+        padding: 0.6rem;
+    }
+    
+    .skill-category h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .skill-icons {
+        grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+        gap: 0.4rem;
+    }
+    
+    .skill-icon {
+        padding: 0.4rem;
+    }
+    
+    .skill-icon i {
+        font-size: 1.1rem;
+    }
+    
+    .skill-icon img {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .skill-icon span {
+        font-size: 0.6rem;
+    }
+    
+    .experience-item {
+        padding: 0.6rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .experience-item h3 {
+        font-size: 1rem;
+    }
+    
+    .company {
+        font-size: 0.9rem;
+    }
+    
+    .period,
+    .role {
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+    
+    .toggle-icon {
+        font-size: 1.3rem;
+        margin-top: -1.3rem;
+    }
+    
+    .extra-details {
+        margin-top: 0.6rem;
+        padding-top: 0.6rem;
+    }
+    
+    .extra-details li {
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem;
+        line-height: 1.3;
+    }
+    
+    .project {
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+    }
+    
+    .project h4 {
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .project p {
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+    
+    /* Toast small mobile */
+    .toast {
+        font-size: 0.75rem;
+        padding: 8px 10px;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+    }
+}
+
+@media (max-width: 360px) {
+    .skills-experience-section {
+        padding: 0.1rem;
+    }
+    
+    .skills-section,
+    .experience-section {
+        padding: 0.6rem;
+        max-height: 45vh;
+    }
+    
+    .skills-section h2,
+    .experience-section h2 {
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .skill-category {
+        margin-bottom: 0.8rem;
+        padding: 0.4rem;
+    }
+    
+    .skill-category h3 {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .skill-icons {
+        grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+        gap: 0.3rem;
+    }
+    
+    .skill-icon {
+        padding: 0.3rem;
+    }
+    
+    .skill-icon i {
+        font-size: 1rem;
+    }
+    
+    .skill-icon img {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .skill-icon span {
+        font-size: 0.55rem;
+    }
+    
+    .experience-item {
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .experience-item h3 {
+        font-size: 0.9rem;
+    }
+    
+    .company {
+        font-size: 0.85rem;
+    }
+    
+    .period,
+    .role {
+        font-size: 0.75rem;
+    }
+    
+    .toggle-icon {
+        font-size: 1.2rem;
+        margin-top: -1.2rem;
+    }
+    
+    .extra-details li {
+        font-size: 0.75rem;
+        line-height: 1.2;
+    }
+    
+    .project {
+        padding: 0.4rem;
+        margin: 0.4rem 0;
+    }
+    
+    .project h4 {
+        font-size: 0.85rem;
+    }
+    
+    .project p {
+        font-size: 0.75rem;
+        line-height: 1.2;
+    }
+    
+    /* Toast extra small */
+    .toast {
+        font-size: 0.7rem;
+        padding: 6px 8px;
+    }
+}
+
+/* Landscape orientation for mobile devices */
+@media (max-width: 768px) and (orientation: landscape) {
+    .skills-experience-container {
+        flex-direction: row;
+        height: calc(100vh - 100px);
+    }
+    
+    .skills-section,
+    .experience-section {
+        flex: 1;
+        max-height: calc(100vh - 120px);
+    }
+    
+    .skills-section h2,
+    .experience-section h2 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .skill-category {
+        margin-bottom: 1rem;
+    }
+    
+    .skill-icons {
+        grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+    }
+    
+    .experience-item {
+        margin-bottom: 0.8rem;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .skills-section,
+    .experience-section {
+        border: 2px solid rgb(109, 67, 0);
+    }
+    
+    .skill-icon {
+        border: 1px solid #333;
+    }
+    
+    .experience-item {
+        border: 1px solid rgb(109, 67, 0);
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .skill-icon:hover,
+    .experience-item:hover {
+        transform: none;
+    }
+    
+    .toggle-icon {
+        transition: none;
+    }
+    
+    .experience-item.expanded .toggle-icon {
+        transform: none;
+    }
+}
+
+/* Dark mode support for skills page */
+@media (prefers-color-scheme: dark) {
+    .skills-experience-section {
+        background: linear-gradient(to right, rgb(20,20,20), rgb(40,30,20));
+    }
+    
+    .skills-section,
+    .experience-section {
+        background: rgba(40, 40, 40, 0.95);
+        color: white;
+    }
+    
+    .skills-section h2,
+    .experience-section h2 {
+        color: rgb(139, 97, 30);
+        border-bottom-color: rgb(139, 97, 30);
+    }
+    
+    .skill-category {
+        background: rgba(139, 97, 30, 0.1);
+        border-left-color: rgb(139, 97, 30);
+    }
+    
+    .skill-category h3 {
+        color: rgb(139, 97, 30);
+    }
+    
+    .skill-icon {
+        background: rgba(60, 60, 60, 0.8);
+        color: white;
+    }
+    
+    .skill-icon i {
+        color: rgb(139, 97, 30);
+    }
+    
+    .skill-icon span {
+        color: #e0e0e0;
+    }
+    
+    .experience-item {
+        background: rgba(60, 60, 60, 0.8);
+        border-left-color: rgb(139, 97, 30);
+        color: white;
+    }
+    
+    .experience-item h3 {
+        color: rgb(139, 97, 30);
+    }
+    
+    .toggle-icon {
+        color: rgb(139, 97, 30);
+    }
+    
+    .company {
+        color: #e0e0e0;
+    }
+    
+    .period,
+    .role {
+        color: #c0c0c0;
+    }
+    
+    .extra-details {
+        border-top-color: rgba(139, 97, 30, 0.3);
+    }
+    
+    .extra-details li {
+        color: #c0c0c0;
+    }
+    
+    .project {
+        background: rgba(139, 97, 30, 0.1);
+        border-left-color: rgb(139, 97, 30);
+    }
+    
+    .project h4 {
+        color: rgb(139, 97, 30);
+    }
+    
+    .project p {
+        color: #c0c0c0;
+    }
+    
+    .project strong {
+        color: rgb(139, 97, 30);
+    }
+}
+
+
