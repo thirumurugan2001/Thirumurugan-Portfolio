@@ -1363,63 +1363,66 @@ textarea.form-input {
         overflow: visible;
     }
 }
-/* Add these specific styles for the about image */
-.about-main-container .about-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    border-radius: 15px;
-}
 
+
+
+
+
+
+
+
+
+
+
+/* Fix for Image09.png height issues in mobile */
 .about-main-container .about-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
     border-radius: 15px;
-    display: block;
-    max-width: 100%;
 }
 
-/* Mobile specific fixes */
+/* Mobile specific fixes for about image */
 @media (max-width: 884px) {
     .about-main-container .about-image {
-        width: 100%;
-        height: 300px;
-        margin: 0 auto 2rem auto;
+        grid-column: 1;
+        grid-row: 1;
         position: relative;
-        display: flex;
+        top: 0;
+        margin-bottom: 2rem;
+        width: 100%;
+        height: 300px; /* Fixed height for mobile */
         justify-content: center;
-        align-items: center;
+        overflow: hidden; /* Prevent image overflow */
     }
     
     .about-main-container .about-image img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        object-position: center top;
+        object-fit: cover; /* Maintains aspect ratio while filling container */
+        object-position: center top; /* Focus on top-center of image */
         border-radius: 15px;
     }
 }
 
 @media (max-width: 600px) {
     .about-main-container .about-image {
-        height: 250px;
-        width: 95%;
-        margin: 0 auto 1rem auto;
-    }
-    
-    .about-main-container .about-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        height: 250px; /* Smaller height for phones */
+        margin-bottom: 1rem;
     }
 }
 
 @media (max-width: 400px) {
     .about-main-container .about-image {
-        height: 200px;
-        width: 90%;
+        height: 200px; /* Even smaller for very small phones */
     }
 }
+
+/* Landscape orientation fix */
+@media (max-width: 884px) and (orientation: landscape) {
+    .about-main-container .about-image {
+        height: 250px; /* Reduced height for landscape */
+    }
+}
+
