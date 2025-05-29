@@ -8,85 +8,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="shortcut icon" href="Assest/Portfolio.png" type="image/x-icon" title="Portfolio Icon">
-    <style>
-        
-        /* Main container layout */
-        .main-container {
-            display: grid;
-            grid-template-columns: 70% 30%;
-            grid-template-rows: auto 1fr;
-            gap: 2rem;
-            height: calc(100vh - 80px);
-            padding: 2rem;
-            overflow: hidden;
-        }
-
-
-        /* Image container styling */
-        .main-container .image {
-            grid-column: 2;
-            grid-row: 1 / span 2;
-            position: sticky;
-            top: 2rem;
-            height: 90%; /* Changed from height: fit-content */
-            width: 80%;
-            padding: 1rem;
-            display: flex; /* Added */
-            align-items: center; /* Added */
-        }
-
-        .main-container .image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Added */
-            object-position: center; /* Added */
-            transition: transform 0.3s ease;
-        }
-
-        /* Typography for scrollable content */
-        .scrollable-content h2 {
-            font-size: 1.1rem;
-            color: rgb(109,67, 0);
-            margin-top: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .scrollable-content p {
-            font-size: 0.9rem;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 1rem;
-        }
-
-/* Responsive design */
-@media (max-width: 1024px) {
-    .main-container {
-        grid-template-columns: 1fr;
-        height: auto;
-        overflow: visible;
-    }
-
-    .main-container .image {
-        grid-column: 1;
-        grid-row: 2;
-        position: relative;
-        top: 0;
-        margin-bottom: 2rem;
-    }
-
-    .scrollable-content {
-        grid-column: 1;
-        grid-row: 3;
-        overflow: visible;
-        padding-right: 0;
-    }
-
-    .main-container h1 {
-        grid-row: 1;
-        position: relative;
-    }
-}
-    </style>
 </head>
 <body>
     <nav>
@@ -106,51 +27,52 @@
             <div class="links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
-                <a href="skills.html">Skills and Experience
-                </a>
+                <a href="skills.html">Skills and Experience</a>
                 <a href="contact.html">Contact Us</a>
                 <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
             </div>
         </div>
     </nav>
-        <section>
-            <div class="main-container">
-                <div class="image" data-aos="zoom-in-right" data-aos-duration="2500">
-                    <img src="Assest/Image09.png" alt="About Image" title="About Image">
-                </div>
-                <div class="scrollable-content">
-                    <h2 data-aos="fade-right" data-aos-duration="1000" data-aos-delay="1100">About Me</h2>
-                    <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000" style="text-align: justify;">
-                        Hello! My name is Thirumurugan Subramaniyan, and I am a dedicated Software Engineer from Chennai with a Bachelor's degree in Computer Science and Engineering from Karpagam Academy of Higher Education, Coimbatore. With a passion for leveraging technology to solve real-world problems, I have honed my skills in designing and developing next-generation AI-powered applications.
-                    </p>
-                    <h2 data-aos="fade-right" data-aos-duration="1000" data-aos-delay="1100">Technical Expertise</h2>
-                    <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200" style="text-align: justify;">
-                        I possess strong expertise in programming languages like Python, JavaScript, and C, along with frameworks such as Flask, Sanic, Django, and FastAPI. These tools enable me to craft robust APIs and seamlessly integrate complex systems. My hands-on experience with Azure OpenAI Service and AWS Bedrock empowers me to deliver innovative, AI-driven solutions tailored to diverse business needs.
-                    </p>
-                    <h2 data-aos="fade-right" data-aos-duration="1000" data-aos-delay="1300">Leadership and Teamwork</h2>
-                    <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1400" style="text-align: justify;">
-                        As a senior NCC cadet in my institution, I've gained invaluable experience in leadership, time management, and teamwork. These qualities enhance my ability to collaborate effectively with cross-functional teams and adapt quickly to new challenges.
-                    </p>
-                    <h2 data-aos="fade-right" data-aos-duration="1000" data-aos-delay="1500">Beyond Work</h2>
-                    <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1600" style="text-align: justify;">
-                        When I'm not coding or exploring new technologies, you can find me indulging in hobbies such as gardening, paper craft, and cooking. These activities fuel my creativity and bring balance to my life.
-                    </p>
-                </div>
+        
+    <section>
+        <div class="about-main-container">
+            <div class="about-image" data-aos="zoom-in-right" data-aos-duration="2500">
+                <img src="Assest/Image09.png" alt="About Image" title="About Image">
             </div>
-        </section>
-        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <script>
-          AOS.init({offset:0});
-        </script>
-        <script>
-            function hamburg(){
-                const navbar = document.querySelector(".dropdown")
-                navbar.style.transform = "translateY(0px)"
-            }
-            function cancel(){
-                const navbar = document.querySelector(".dropdown")
-                navbar.style.transform = "translateY(-500px)"
-            }
-        </script>
+            <div class="scrollable-content">
+                <h2 data-aos="fade-right" data-aos-duration="1000" data-aos-delay="1100">About Me</h2>
+                <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
+                    Hello! My name is Thirumurugan Subramaniyan, and I am a dedicated Software Engineer from Chennai with a Bachelor's degree in Computer Science and Engineering from Karpagam Academy of Higher Education, Coimbatore. With a passion for leveraging technology to solve real-world problems, I have honed my skills in designing and developing next-generation AI-powered applications.
+                </p>
+                <h2 data-aos="fade-right" data-aos-duration="1000" data-aos-delay="1000">Technical Expertise</h2>
+                <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
+                    I possess strong expertise in programming languages like Python, JavaScript, and C, along with frameworks such as Flask, Sanic, Django, and FastAPI. These tools enable me to craft robust APIs and seamlessly integrate complex systems. My hands-on experience with Azure OpenAI Service and AWS Bedrock empowers me to deliver innovative, AI-driven solutions tailored to diverse business needs.
+                </p>
+                <h2 data-aos="fade-right" data-aos-duration="1000" data-aos-delay="1000">Leadership and Teamwork</h2>
+                <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
+                    As a senior NCC cadet in my institution, I've gained invaluable experience in leadership, time management, and teamwork. These qualities enhance my ability to collaborate effectively with cross-functional teams and adapt quickly to new challenges.
+                </p>
+                <h2 data-aos="fade-right" data-aos-duration="1000" data-aos-delay="1000">Beyond Work</h2>
+                <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
+                    When I'm not coding or exploring new technologies, you can find me indulging in hobbies such as gardening, paper craft, and cooking. These activities fuel my creativity and bring balance to my life.
+                </p>
+            </div>
+        </div>
+    </section>
+        
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({offset:0});
+    </script>
+    <script>
+        function hamburg(){
+            const navbar = document.querySelector(".dropdown")
+            navbar.style.transform = "translateY(0px)"
+        }
+        function cancel(){
+            const navbar = document.querySelector(".dropdown")
+            navbar.style.transform = "translateY(-500px)"
+        }
+    </script>
 </body>
 </html>
