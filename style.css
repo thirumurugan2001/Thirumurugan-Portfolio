@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 
 *{
@@ -24,7 +23,6 @@ nav{
     height: 10vh;
     position: sticky;
 }
-
 
 .nav-container{
     width: 100%;
@@ -162,6 +160,78 @@ section{
     min-height: 100px;
 }
 
+/* About Page Specific Styles */
+.about-main-container {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: auto 1fr;
+    gap: 2rem;
+    height: calc(100vh - 80px);
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.about-main-container .about-image {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    position: sticky;
+    top: 2rem;
+    height: 90%;
+    width: 80%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.about-main-container .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.scrollable-content {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    overflow-y: auto;
+    padding-right: 1rem;
+    max-height: calc(100vh - 120px);
+}
+
+.scrollable-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+    background: rgba(109, 67, 0, 0.3);
+    border-radius: 10px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(109, 67, 0, 0.5);
+}
+
+.scrollable-content h2 {
+    font-size: 1.1rem;
+    color: rgb(109,67, 0);
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.scrollable-content p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
 .content h1{
     font-size: clamp(1rem, 2rem + 5vw, 3rem);
 }
@@ -220,7 +290,6 @@ section{
     81%, 100%{
         content: "AL/ML Engineer";
     }
-
 }
 
 .content p{
@@ -265,64 +334,12 @@ section{
 }
 
 .content button:hover{
- scale: 1.1;
- color: rgb(109,67, 0);
- border: 2px solid rgb(109,67, 0);
- background-color: transparent;
- font-weight: 700;
- box-shadow: 0 0 40px rgb(109,67, 0);
-}
-
-@media (max-width:884px) {
-    body{
-        overflow-y: visible;
-    }
-
-    nav .logo{
-        position: absolute;
-        top: 16px;
-        left: 15px;
-        font-size: 1.5rem;
-    }
-
-    .main-container{
-        display: flex;
-        flex-direction: column;
-    }
-
-    .nav-container .links{
-        display: none;
-    }
-
-    .hamburg,.cancel{
-        display: block;
-    }
-
-    .main-container .content{
-        width: 80%;
-    }
-
-    .social-links i{
-        width: 2.5rem;
-        height: 2.5rem;
-        font-size: 1.5rem;
-    }
-    .cancel{
-        color: white;
-    }
-
-    .main-container .image{
-        width: 80%;
-        margin-bottom: 0px;
-    }
-}
-
-
-.main-container {
-    display: flex;
-    gap: 2rem;
-    padding: 2rem;
-    height: calc(100vh - 100px); 
+     scale: 1.1;
+     color: rgb(109,67, 0);
+     border: 2px solid rgb(109,67, 0);
+     background-color: transparent;
+     font-weight: 700;
+     box-shadow: 0 0 40px rgb(109,67, 0);
 }
 
 .skills-section {
@@ -336,6 +353,7 @@ section{
     overflow-y: auto;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .experience-section {
     flex: 1;
     color: rgb(109,67, 0);
@@ -371,7 +389,6 @@ section{
     background: rgba(255, 255, 255, 0.5);
 }
 
-
 .skill-category {
     margin-bottom: 2rem;
     padding-bottom: 8px;
@@ -400,13 +417,14 @@ section{
     font-size: 30px;
     padding-left: 10px;
 }
+
 .skill-category img {
     color: #413a3a;
     line-height: 1.6;
     font-size: 30px;
     padding-left: 10px;
-    width: 40px; /* Set the width */
-    height: 40px; /
+    width: 40px;
+    height: 40px;
 }
 
 .experience-item {
@@ -414,11 +432,13 @@ section{
     padding: 1.5rem;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .experience-item h3 {
     color: #1c1919;
     margin-bottom: 0.5rem;
+    font-weight: bold;
 }
 
 .company {
@@ -431,11 +451,13 @@ section{
     color: #413a3a;
     font-style: italic;
     margin-bottom: 1rem;
+    font-weight: bold;
 }
 
 .role {
     color: #413a3a;
     margin-bottom: 1rem;
+    font-weight: bold;
 }
 
 .project {
@@ -450,6 +472,10 @@ section{
     margin-bottom: 0.5rem;
 }
 
+.extra-details {
+    margin-top: 10px;
+}
+
 ul {
     padding-left: 1.5rem;
     margin-top: 1rem;
@@ -461,41 +487,9 @@ li {
     line-height: 1.6;
 }
 
-/* Responsive styles */
-@media (max-width: 900px) {
-    .main-container {
-        flex-direction: column;
-        height: auto;
-        padding: 1rem;
-    }
-
-    .skills-section,
-    .experience-section {
-        height: 50vh; /* Fixed height on mobile */
-        margin-bottom: 1rem;
-    }
-}
-
-.experience-item {
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-.extra-details {
-    margin-top: 10px;
-}
-
-h3, .company, .period, .role {
-    font-weight: bold;
-}
-
 .project ul {
     list-style-type: square;
     margin-left: 20px;
-}
-
-.project {
-    margin-top: 10px;
 }
 
 .toast {
@@ -514,7 +508,7 @@ h3, .company, .period, .role {
     z-index: 9999;
     opacity: 1;
     transition: opacity 0.5s ease;
-}        
+}
 
 .toast.success {
     background-color: #6cc76f;
@@ -541,16 +535,17 @@ h3, .company, .period, .role {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease-in-out;
 }
+
 .toast.show {
     opacity: 1;
 }
-  
-  #toast-message {
+
+#toast-message {
     margin-right: 10px;
-  }
-  
-  .swipe-container {
-    text-align: left; 
+}
+
+.swipe-container {
+    text-align: left;
     position: relative;
     width: 350px;
     margin: 20px 0 20px 0;
@@ -559,6 +554,7 @@ h3, .company, .period, .role {
     border-radius: 10px;
     overflow: hidden;
 }
+
 .swipe-track {
     height: 50px;
     width: 100%;
@@ -590,25 +586,32 @@ h3, .company, .period, .role {
     align-items: center;
     cursor: grab;
 }
-.swipe-container:hover { 
+
+.swipe-container:hover {
     transform: scale(1.3);
     color: white;
     background-color: rgb(109, 67, 0);
     filter: drop-shadow(0 0 10px rgb(109, 67, 0));
-    transition: all 0.3s ease; /* Smooth transition effect */
+    transition: all 0.3s ease;
 }
-
 
 .contact-container {
     max-width: 600px;
     margin: 40px auto;
     padding: 30px;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 80vh;
+    display: flex;
+    gap: 40px;
+    align-items: center;
 }
 
 .contact-header {
     margin-bottom: 30px;
+    flex: 1;
+    padding-right: 20px;
 }
-
 
 .contact-title {
     font-size: 24px;
@@ -624,10 +627,37 @@ h3, .company, .period, .role {
     margin-bottom: 25px;
 }
 
+.contact-header h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contact-header p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.contact-header i {
+    color: rgb(9, 9, 9);
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.contact-header span {
+    color: rgb(77, 73, 73);
+    font-size: 15px;
+    padding-left: 15px;
+}
+
 .contact-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    flex: 1;
 }
 
 .form-input {
@@ -647,69 +677,6 @@ h3, .company, .period, .role {
 textarea.form-input {
     min-height: 120px;
     resize: vertical;
-}
-
-.submit-button {
-    background-color: #3a3a3a;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: fit-content;
-}
-
-.submit-button:hover {
-    background-color: #2a2a2a;
-}
-
-
-.contact-container {
-    width: 100%;
-    max-width: 1200px;
-    min-height: 80vh;
-    padding: 40px;
-    display: flex;
-    gap: 40px;
-    align-items: center;
-}
-
-.contact-header {
-    flex: 1;
-    padding-right: 20px;
-}
-
-.contact-header h2 {
-    font-size: 32px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.contact-header p {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-.contact-header i {
-    color: rgb(9, 9, 9);
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-.contact-header span {
-    color: rgb(77, 73, 73);
-    font-size: 15px;
-    padding-left: 15px;
-}
-.contact-form {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 }
 
 .form-group {
@@ -739,6 +706,23 @@ textarea.form-input {
     resize: vertical;
 }
 
+.submit-button {
+    background-color: #3a3a3a;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+}
+
+.submit-button:hover {
+    background-color: #2a2a2a;
+}
+
 .submit-btn {
     background-color: rgb(109,67, 0);
     color: white;
@@ -750,11 +734,10 @@ textarea.form-input {
     cursor: pointer;
     width: 100%;
     transition: all 0.3s ease;
-    display: inline-block; 
-    margin-right: 10px; 
+    display: inline-block;
+    margin-right: 10px;
     box-sizing: border-box;
 }
-
 
 .submit-btn:hover {
     scale: 1.1;
@@ -768,7 +751,6 @@ textarea.form-input {
     width: 30%;
     height: 30%;
 }
-
 
 .toast1 {
     position: fixed;
@@ -786,4 +768,658 @@ textarea.form-input {
     z-index: 9999;
     opacity: 1;
     transition: opacity 0.5s ease;
-}   
+}
+
+/* MOBILE RESPONSIVE STYLES */
+
+/* Large tablets and small desktops */
+@media (max-width: 1024px) {
+    .nav-container .links {
+        gap: 2rem;
+    }
+    
+    .nav-container .links a {
+        font-size: 1.1rem;
+    }
+    
+    .main-container {
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .main-container .content {
+        width: 55%;
+    }
+    
+    .main-container .image {
+        width: 35%;
+    }
+    
+    .content .typewriter span {
+        font-size: 2rem;
+    }
+    
+    .skills-section,
+    .experience-section {
+        padding: 1.5rem;
+    }
+    
+    .contact-container {
+        padding: 20px;
+        gap: 30px;
+    }
+    
+    .swipe-container {
+        width: 300px;
+    }
+
+    /* About page responsive */
+    .about-main-container {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow: visible;
+        padding: 1rem;
+    }
+    
+    .about-main-container .about-image {
+        grid-column: 1;
+        grid-row: 2;
+        position: relative;
+        top: 0;
+        margin-bottom: 2rem;
+        width: 100%;
+        height: 400px;
+    }
+    
+    .scrollable-content {
+        grid-column: 1;
+        grid-row: 3;
+        overflow: visible;
+        padding-right: 0;
+        max-height: none;
+    }
+}
+
+/* Tablets */
+@media (max-width: 884px) {
+    body {
+        overflow-y: visible;
+        height: auto;
+    }
+    
+    nav .logo {
+        position: absolute;
+        top: 16px;
+        left: 15px;
+        font-size: 1.5rem;
+    }
+    
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+    }
+    
+    .nav-container .links {
+        display: none;
+    }
+    
+    .hamburg, .cancel {
+        display: block;
+    }
+    
+    .main-container .content {
+        width: 80%;
+        order: 2;
+    }
+    
+    .main-container .image {
+        width: 80%;
+        margin-bottom: 20px;
+        order: 1;
+    }
+    
+    .social-links i {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.5rem;
+        margin: 5px 5px;
+    }
+    
+    .cancel {
+        color: white;
+    }
+    
+    .content button {
+        width: 60%;
+        margin: 20px 0;
+    }
+    
+    .content .typewriter span {
+        font-size: 1.8rem;
+    }
+    
+    .skills-section,
+    .experience-section {
+        width: 100%;
+        height: 50vh;
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+    
+    .contact-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+        min-height: auto;
+    }
+        .contact-header {
+        padding-right: 0;
+        text-align: center;
+    }
+    
+    .contact-header h2 {
+        font-size: 28px;
+    }
+    
+    .swipe-container {
+        width: 280px;
+        margin: 15px auto;
+    }
+    
+    .toast1,
+    .toast {
+        width: 90%;
+        left: 5%;
+        transform: none;
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    /* About page tablet responsive */
+    .about-main-container {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow: visible;
+        padding: 1rem;
+    }
+    
+    .about-main-container .about-image {
+        grid-column: 1;
+        grid-row: 1;
+        position: relative;
+        top: 0;
+        margin-bottom: 2rem;
+        width: 100%;
+        height: 300px;
+        justify-content: center;
+    }
+    
+    .scrollable-content {
+        grid-column: 1;
+        grid-row: 2;
+        overflow: visible;
+        padding-right: 0;
+        max-height: none;
+    }
+
+    .scrollable-content h2 {
+        font-size: 1.3rem;
+        margin-top: 1.5rem;
+    }
+
+    .scrollable-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 600px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    nav .logo {
+        font-size: 1.2rem;
+        left: 10px;
+        top: 18px;
+    }
+    
+    .hamburg, .cancel {
+        right: 10px;
+        font-size: 1.8rem;
+    }
+    
+    .main-container {
+        padding: 0.5rem;
+    }
+    
+    .main-container .content,
+    .main-container .image {
+        width: 95%;
+    }
+    
+    .content h1 {
+        font-size: clamp(1.2rem, 4vw, 2rem);
+        text-align: center;
+    }
+    
+    .content .typewriter {
+        font-size: clamp(0.9rem, 3vw, 1.5rem);
+        text-align: center;
+    }
+    
+    .content .typewriter span {
+        font-size: 1.5rem;
+    }
+    
+    .content p {
+        font-size: clamp(0.8rem, 2.5vw, 1rem);
+        text-align: justify;
+        margin: 15px 0;
+    }
+    
+    .social-links {
+        text-align: center;
+        margin: 20px 0;
+    }
+    
+    .social-links i {
+        width: 2.2rem;
+        height: 2.2rem;
+        font-size: 1.2rem;
+        margin: 3px;
+    }
+    
+    .content button {
+        width: 80%;
+        height: 50px;
+        font-size: 14px;
+        margin: 15px auto;
+        display: block;
+    }
+    
+    .skills-section,
+    .experience-section {
+        height: 40vh;
+        padding: 0.8rem;
+    }
+    
+    .skill-category h3 {
+        font-size: 1rem;
+    }
+    
+    .skill-category i,
+    .skill-category img {
+        font-size: 25px;
+        width: 30px;
+        height: 30px;
+        padding-left: 5px;
+    }
+    
+    .experience-item {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .experience-item h3 {
+        font-size: 1rem;
+    }
+    
+    .company,
+    .period,
+    .role {
+        font-size: 0.9rem;
+    }
+    
+    .project {
+        padding: 0.8rem;
+        margin-top: 1rem;
+    }
+    
+    .project h4 {
+        font-size: 0.9rem;
+    }
+    
+    li {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+    
+    .contact-container {
+        padding: 10px;
+    }
+    
+    .contact-header h2 {
+        font-size: 24px;
+    }
+    
+    .contact-header p {
+        font-size: 13px;
+    }
+    
+    .contact-header i {
+        font-size: 18px;
+    }
+    
+    .contact-header span {
+        font-size: 13px;
+        padding-left: 10px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .submit-btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    .swipe-container {
+        width: 250px;
+    }
+    
+    .swipe-span {
+        font-size: 0.8rem;
+    }
+    
+    .swipe-button {
+        width: 45px;
+        height: 45px;
+        font-size: 14px;
+    }
+    
+    .envelope-icon {
+        width: 50%;
+        height: 50%;
+    }
+
+    /* About page mobile responsive */
+    .about-main-container {
+        padding: 0.5rem;
+        gap: 1rem;
+    }
+    
+    .about-main-container .about-image {
+        height: 250px;
+        margin-bottom: 1rem;
+    }
+    
+    .scrollable-content h2 {
+        font-size: 1.1rem;
+        margin-top: 1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .scrollable-content p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 400px) {
+    .logo {
+        font-size: 1rem;
+    }
+    
+    nav .logo {
+        font-size: 1rem;
+    }
+    
+    .content h1 {
+        font-size: clamp(1rem, 5vw, 1.8rem);
+    }
+    
+    .content .typewriter span {
+        font-size: 1.2rem;
+    }
+    
+    .content p {
+        font-size: 0.85rem;
+    }
+    
+    .social-links i {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+    }
+    
+    .content button {
+        width: 90%;
+        height: 45px;
+        font-size: 12px;
+    }
+    
+    .skills-section,
+    .experience-section {
+        height: 35vh;
+        padding: 0.6rem;
+    }
+    
+    .skill-category i,
+    .skill-category img {
+        font-size: 20px;
+        width: 25px;
+        height: 25px;
+    }
+    
+    .contact-header h2 {
+        font-size: 20px;
+    }
+    
+    .swipe-container {
+        width: 220px;
+    }
+    
+    .toast1,
+    .toast {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    #toast-message {
+        margin-right: 5px;
+    }
+    
+    .cancel-icon {
+        width: 18px;
+        height: 18px;
+        font-size: 12px;
+    }
+
+    /* About page extra small responsive */
+    .about-main-container {
+        padding: 0.3rem;
+    }
+    
+    .about-main-container .about-image {
+        height: 200px;
+    }
+    
+    .scrollable-content h2 {
+        font-size: 1rem;
+        margin-top: 0.8rem;
+    }
+    
+    .scrollable-content p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-width: 884px) and (orientation: landscape) {
+    body {
+        overflow-y: auto;
+    }
+    
+    .main-container {
+        flex-direction: row;
+        height: auto;
+        min-height: 90vh;
+    }
+    
+    .main-container .content {
+        width: 60%;
+        order: 1;
+    }
+    
+    .main-container .image {
+        width: 35%;
+        order: 2;
+    }
+    
+    .content h1 {
+        font-size: clamp(1rem, 3vw, 2rem);
+    }
+    
+    .content .typewriter span {
+        font-size: 1.5rem;
+    }
+    
+    .skills-section,
+    .experience-section {
+        height: 60vh;
+    }
+
+    /* About page landscape */
+    .about-main-container {
+        grid-template-columns: 60% 40%;
+        height: auto;
+        min-height: 90vh;
+    }
+    
+    .about-main-container .about-image {
+        grid-column: 2;
+        grid-row: 1;
+        height: 80vh;
+        margin-bottom: 0;
+    }
+    
+    .scrollable-content {
+        grid-column: 1;
+        grid-row: 1;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+}
+
+/* Fix for very wide screens */
+@media (min-width: 1400px) {
+    .main-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .contact-container {
+        max-width: 1200px;
+        margin: 40px auto;
+    }
+
+    .about-main-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+}
+
+/* About page specific responsive adjustments */
+@media (max-width: 1024px) {
+    .about-main-container .about-image {
+        width: 90%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+    }
+    
+    section {
+        height: auto;
+        min-height: 90vh;
+    }
+}
+
+/* Ensure proper scrolling on about page for mobile */
+@media (max-width: 884px) {
+    body {
+        overflow-y: auto;
+    }
+    
+    section {
+        height: auto;
+    }
+    
+    .about-main-container {
+        height: auto;
+        overflow: visible;
+    }
+}
+/* Add these specific styles for the about image */
+.about-main-container .about-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.about-main-container .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+    display: block;
+    max-width: 100%;
+}
+
+/* Mobile specific fixes */
+@media (max-width: 884px) {
+    .about-main-container .about-image {
+        width: 100%;
+        height: 300px;
+        margin: 0 auto 2rem auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .about-main-container .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        border-radius: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-main-container .about-image {
+        height: 250px;
+        width: 95%;
+        margin: 0 auto 1rem auto;
+    }
+    
+    .about-main-container .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 400px) {
+    .about-main-container .about-image {
+        height: 200px;
+        width: 90%;
+    }
+}
