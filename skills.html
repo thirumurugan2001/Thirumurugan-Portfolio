@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="shortcut icon" href="Assest/Portfolio.png" type="image/x-icon" title="Portfolio Icon">
 </head>
-<body>  
+<body>
     <nav>
         <div class="nav-container">
             <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
@@ -27,17 +27,18 @@
             <div class="links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
-                <a href="skills.html">Skills and Experience
-                </a>
+                <a href="skills.html">Skills and Experience</a>
                 <a href="contact.html">Contact Us</a>
                 <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
             </div>
         </div>
     </nav>
+    
     <div id="toast" class="toast">
         <span id="toast-message">Tap on the company name to see more information.</span>
         <span id="cancel-icon" class="cancel-icon">&times;</span>
-      </div>
+    </div>
+    
     <section>
         <div class="main-container">
             <div class="skills-section">
@@ -50,27 +51,23 @@
                     <i class="fa-brands fa-python" title="Python"></i>
                     <i class="fa-brands fa-html5" title="HTML"></i>
                     <i class="fa-brands fa-css" title="CSS"></i>
-                    <p>C, Java, JavaScript, Python, HTML5, CSS</p>  
+                    <p>C, Java, JavaScript, Python, HTML5, CSS</p>
                 </div>
-
-                <div class="skill-category"  data-aos="fade-left" data-aos-duration="1000">
+                <div class="skill-category" data-aos="fade-left" data-aos-duration="1000">
                     <h3>Database Exposure : </h3>
                     <img src="Assest/mysql.png" alt="MySQL" title="MySQL">
                     <img src="Assest/postgresql.png" alt="PostgreSQL" title="PostgreSQL">
                     <img src="Assest/mongodb.png" alt="MongoDB" title="MongoDB">
                     <p>MySQL, PostgreSQL, MongoDB</p>
                 </div>
-
-                <div class="skill-category"  data-aos="fade-left" data-aos-duration="1000">
+                <div class="skill-category" data-aos="fade-left" data-aos-duration="1000">
                     <h3>Operating Systems : </h3>
                     <i class="fa-brands fa-windows" title="Windows"></i>
                     <i class="fa-brands fa-linux" title="Linux"></i>
                     <i class="fa-brands fa-ubuntu" title="Ubuntu"></i>
                     <p>Windows, Linux, Ubuntu</p>
-                    
                 </div>
-
-                <div class="skill-category"  data-aos="fade-left" data-aos-duration="1000">
+                <div class="skill-category" data-aos="fade-left" data-aos-duration="1000">
                     <h3>Development Tools : </h3>
                     <img src="Assest/eclipse.png" alt="Eclipse" title="Eclipse">
                     <img src="Assest/visual-studio.png" alt="Visual Studio" title="Visual Studio">
@@ -78,7 +75,6 @@
                     <img src="Assest/jupyter.png" alt="Jupiter" title="Jupiter">
                     <p>Eclipse, Visual Studio, Sublime Text, Jupiter</p>
                 </div>
-
                 <div class="skill-category" data-aos-duration="1000">
                     <h3>Frameworks and Packages : </h3>
                     <img src="Assest/react.png" alt="React" title="React">
@@ -92,9 +88,8 @@
                     <img src="Assest/tensorflow.png" alt="Tensor flow" title="Tensor flow">
                     <img src="Assest/pytorch.png" alt="Pytorch" title=" Pytorch">
                     <img src="Assest/ocr.png" alt="OCR" title="OCR">
-
                     <p>React, Flask, Django, Fast API, Pandas, NumPy, Playwright, Lang Chain, Tensor flow, Pytorch, OCR</p>
-                </div>  
+                </div>
                 <div class="skill-category" data-aos-duration="1000">
                     <h3>Other Skills : </h3>
                     <img src="Assest/postman.png" alt="postman" title="Postman">
@@ -112,11 +107,10 @@
                     <img src="Assest/CICD.png" alt="CI/CD pipeline" title="CI/CD pipeline">
                     <img src="Assest/automation.png" alt="Automation Testing" title="Automation Testing">
                     <img src="Assest/webscrping.png" alt="Web Scraping" title="Web Scraping">
-                    
                     <p>Postman, Draw.io, PlanetUMl, Git, pgadmin, WSL, Gen AI prompting, RAG, Vector DB, Azure Open AI Models, AWS Bedrock,Googl Gemini models, CI/CD pipeline, Automation Testing, Web Scraping</p>
-                </div>                
+                </div>
             </div>
-
+            
             <div class="experience-section" data-aos="fade-left" data-aos-duration="1000">
                 <h2>Professional Experience</h2>
                 <!-- Vpearl Solution -->
@@ -143,7 +137,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Avasoft -->
                 <div class="experience-item" onclick="toggleDetails(this)">
                     <h3>Software Engineer</h3>
@@ -189,7 +183,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Claysys -->
                 <div class="experience-item" onclick="toggleDetails(this)">
                     <h3>RPA Developer</h3>
@@ -204,17 +198,21 @@
                         </ul>
                     </div>
                 </div>
+            </div>
         </div>
     </section>
+    
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      AOS.init({offset:0});
+        AOS.init({offset:0});
     </script>
+    
     <script>
         function hamburg(){
             const navbar = document.querySelector(".dropdown")
             navbar.style.transform = "translateY(0px)"
         }
+        
         function cancel(){
             const navbar = document.querySelector(".dropdown")
             navbar.style.transform = "translateY(-500px)"
@@ -231,33 +229,33 @@
             }
         }
     </script>
-
+    
     <script>
-        // Function to show the toast
         function showToast() {
-            let toastCount= localStorage.getItem("toastCount")
+            let toastCount = localStorage.getItem("toastCount")
             console.log(toastCount,"toastMessage")
-            if (toastCount == null || toastCount ==0){
+            if (toastCount == null || toastCount == 0){
                 toastCount = 0
+                const toast = document.getElementById('toast');
+                toast.style.opacity = 1;
+                setTimeout(() => {
+                    toast.style.opacity = 0;
+                }, 3000);
             }
         }
         
         const toast = document.getElementById('toast');
         const cancelIcon = document.getElementById('cancel-icon');
-    
-        // Show the toast for 5 seconds
-        toast.style.opacity = 1;
-        setTimeout(() => {
-        toast.style.opacity = 0;
-        }, 3000);
-    
+        
         // Hide the toast when the cancel icon is clicked
         cancelIcon.addEventListener('click', () => {
-        toast.style.opacity = 0;
+            toast.style.opacity = 0;
         });
+        
         localStorage.setItem("toastCount", 1)
         // Call showToast to display the toast message
         showToast();
     </script>
+    
 </body>
 </html>
