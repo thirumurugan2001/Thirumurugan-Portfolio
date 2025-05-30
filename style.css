@@ -11,11 +11,143 @@ html{
     overflow-x: hidden;
 }
 
-body{
+body {
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    background: linear-gradient(to right, rgb(255,255,255), rgb(254,215,173));
+    background: linear-gradient(
+        45deg,
+        rgb(255, 255, 255),
+        rgb(254, 215, 173),
+        rgb(255, 230, 200),
+        rgb(255, 255, 255)
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease-in-out infinite;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at 20% 30%,
+        rgba(254, 215, 173, 0.3) 0%,
+        transparent 50%
+    ),
+    radial-gradient(
+        circle at 80% 70%,
+        rgba(255, 255, 255, 0.4) 0%,
+        transparent 50%
+    ),
+    radial-gradient(
+        circle at 50% 50%,
+        rgba(254, 215, 173, 0.2) 0%,
+        transparent 60%
+    );
+    animation: floatingOrbs 12s ease-in-out infinite;
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(254, 215, 173, 0.15) 25%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(254, 215, 173, 0.15) 75%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    background-size: 200% 200%;
+    animation: waveMotion 15s linear infinite;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    75% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes floatingOrbs {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+    }
+    25% {
+        transform: translate(30px, -20px) scale(1.1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(-20px, 30px) scale(0.9);
+        opacity: 0.4;
+    }
+    75% {
+        transform: translate(40px, 10px) scale(1.05);
+        opacity: 0.7;
+    }
+}
+
+@keyframes waveMotion {
+    0% {
+        background-position: 0% 0%;
+        transform: rotate(0deg);
+    }
+    25% {
+        background-position: 100% 50%;
+        transform: rotate(1deg);
+    }
+    50% {
+        background-position: 0% 100%;
+        transform: rotate(0deg);
+    }
+    75% {
+        background-position: 50% 0%;
+        transform: rotate(-1deg);
+    }
+    100% {
+        background-position: 0% 0%;
+        transform: rotate(0deg);
+    }
+}
+
+/* Additional breathing effect */
+@keyframes breathe {
+    0%, 100% {
+        filter: brightness(1) saturate(1);
+    }
+    50% {
+        filter: brightness(1.05) saturate(1.1);
+    }
+}
+
+body {
+    animation: 
+        gradientShift 8s ease-in-out infinite,
+        breathe 6s ease-in-out infinite;
 }
 
 nav{
@@ -1364,16 +1496,6 @@ textarea.form-input {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
 /* Fix for Image09.png height issues in mobile */
 .about-main-container .about-image img {
     width: 100%;
@@ -1386,6 +1508,7 @@ textarea.form-input {
 /* Mobile specific fixes for about image */
 @media (max-width: 884px) {
     .about-main-container .about-image {
+        display: none;
         grid-column: 1;
         grid-row: 1;
         position: relative;
